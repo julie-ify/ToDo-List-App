@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/julie-ify/ToDo-List-App/issues"
   },
-  "homepage": "https://github.com/julie-ify/ToDo-List-App#readme",
+  "homepage": "https://github.com/julie-ify/ToDo-List-App",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.2.0",
