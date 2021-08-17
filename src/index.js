@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
 const listContainer = document.querySelector('.container');
@@ -21,7 +20,7 @@ const toDoList = [
 ];
 
 function populateList() {
-  let toDoListItems = toDoList;
+  const toDoListItems = toDoList;
   for (let i = 0; i < toDoListItems.length; i += 1) {
     const task = toDoListItems[i];
     const list = document.createElement('li');
@@ -51,11 +50,9 @@ function populateList() {
   }
 }
 
-listContainer.addEventListener('click', addNewTask);
 function addNewTask(e) {
   const list = [...document.querySelectorAll('.list')];
   for (let i = 0; i < list.length; i += 1) {
-    let task = list[i];
     if (e.target.checked === true) {
       e.target.nextElementSibling.classList.add('strike');
     } else {
@@ -63,5 +60,7 @@ function addNewTask(e) {
     }
   }
 }
+
+listContainer.addEventListener('click', addNewTask);
 
 window.onload = populateList;
