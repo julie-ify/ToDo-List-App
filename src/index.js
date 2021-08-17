@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import './style.css';
 
+const listContainer = document.querySelector('.container')
 const toDoList = [
   {
     description: 'cook',
@@ -24,7 +25,6 @@ function populateList() {
   let toDoListItems = toDoList;
   for(let i = 0; i < toDoListItems.length; i += 1) {
     let task = toDoListItems[i];
-    let listContainer = document.querySelector('.container')
     let list = document.createElement('li');
     list.classList.add('list');
     list.id = task.id;
@@ -51,4 +51,17 @@ function populateList() {
   }
 }
 
-populateList()
+
+listContainer.addEventListener('click', addNewTask);
+function addNewTask(e) {
+  const list = [...document.querySelectorAll('.list')];
+  for (let i = 0; i < list.length; i += 1) {
+    let task = list[i];
+    if (e.target.checked === true) {
+      e.target.nextElementSibling.classList.add('strike');
+    } else {
+      e.target.nextElementSibling.classList.remove('strike');
+    }
+  }
+}
+window.onload = populateList;
