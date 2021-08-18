@@ -1,4 +1,6 @@
 import './style.css';
+import check from './check.js';
+import saveStorage from './storage.js';
 
 const listContainer = document.querySelector('.container');
 const toDoList = [
@@ -19,48 +21,74 @@ const toDoList = [
   },
 ];
 
-function populateList() {
-  const toDoListItems = toDoList;
-  for (let i = 0; i < toDoListItems.length; i += 1) {
-    const task = toDoListItems[i];
+function populateList(tasks) {
+  for (let i = 0; i < tasks.length; i += 1) {
     const list = document.createElement('li');
     list.classList.add('list');
-    list.id = task.index;
+    list.id = tasks[i].index;
     list.draggable = true;
+
     const listFChild = document.createElement('div');
     listFChild.classList.add('div1');
+
     const input = document.createElement('input');
     input.classList.add('check');
     input.type = 'checkbox';
     input.name = 'check1';
+
+    if (tasks[i].completed) {
+      input.checked = true;
+    }
+
     const label = document.createElement('label');
     label.contentEditable = true;
     label.classList.add('label');
-    label.innerHTML = task.description;
+    label.innerHTML = tasks[i].description;
+    label.style.textDecoration = tasks.completed === true ? 'line-through' : 'none';
+
     const span = document.createElement('span');
     span.classList.add('dot');
-    const fontAwesome = document.createElement('i');
-    fontAwesome.className += 'fas fa-ellipsis-v';
-    span.appendChild(fontAwesome);
+
+    const dot = document.createElement('i');
+    dot.className += 'fas fa-ellipsis-v';
+
+    const trash = document.createElement('span');
+    trash.innerHTML = "<i class='fas fa-trash-alt'></i>";
+    trash.style.display = 'none';
+
+    span.appendChild(dot);
     list.appendChild(listFChild);
     listFChild.appendChild(input);
     listFChild.appendChild(label);
     listFChild.appendChild(span);
+    listFChild.appendChild(trash);
     listContainer.appendChild(list);
+
+    label.addEventListener('focus', () => {
+      span.style.display = 'none';
+      trash.style.display = 'flex';
+    });
+
+    label.addEventListener('blur', () => {
+      span.style.display = 'flex';
+      trash.style.display = 'none';
+    });
+
+    input.addEventListener('change', (e) => {
+      check(e.target, tasks[i]);
+      saveStorage(tasks);
+    });
   }
 }
 
-function addNewTask(e) {
-  const list = [...document.querySelectorAll('.list')];
-  for (let i = 0; i < list.length; i += 1) {
-    if (e.target.checked === true) {
-      e.target.nextElementSibling.classList.add('strike');
-    } else {
-      e.target.nextElementSibling.classList.remove('strike');
-    }
+window.addEventListener('load', () => {
+  const todoList = JSON.parse(localStorage.getItem('todo-list'));
+
+  if (todoList == null) {
+    populateList(toDoList);
+  } else {
+    populateList(todoList);
   }
-}
+});
 
-listContainer.addEventListener('click', addNewTask);
-
-window.onload = populateList;
+localStorage.clear();

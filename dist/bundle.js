@@ -100,13 +100,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, style) {\
 
 /***/ }),
 
+/***/ "./src/check.js":
+/*!**********************!*\
+  !*** ./src/check.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst check = (checkbox, item) => {\r\n  if(checkbox.checked) {\r\n    item.completed = true\r\n  } else {\r\n    item.completed = false\r\n  }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (check);\n\n//# sourceURL=webpack://todo-list-app/./src/check.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\nconst listContainer = document.querySelector('.container');\nconst toDoList = [\n  {\n    description: 'cook',\n    completed: false,\n    index: 1,\n  },\n  {\n    description: 'dance',\n    completed: false,\n    index: 2,\n  },\n  {\n    description: 'sing',\n    completed: false,\n    index: 3,\n  },\n];\n\nfunction populateList() {\n  const toDoListItems = toDoList;\n  for (let i = 0; i < toDoListItems.length; i += 1) {\n    const task = toDoListItems[i];\n    const list = document.createElement('li');\n    list.classList.add('list');\n    list.id = task.index;\n    list.draggable = true;\n    const listFChild = document.createElement('div');\n    listFChild.classList.add('div1');\n    const input = document.createElement('input');\n    input.classList.add('check');\n    input.type = 'checkbox';\n    input.name = 'check1';\n    const label = document.createElement('label');\n    label.contentEditable = true;\n    label.classList.add('label');\n    label.innerHTML = task.description;\n    const span = document.createElement('span');\n    span.classList.add('dot');\n    const fontAwesome = document.createElement('i');\n    fontAwesome.className += 'fas fa-ellipsis-v';\n    span.appendChild(fontAwesome);\n    list.appendChild(listFChild);\n    listFChild.appendChild(input);\n    listFChild.appendChild(label);\n    listFChild.appendChild(span);\n    listContainer.appendChild(list);\n  }\n}\n\nfunction addNewTask(e) {\n  const list = [...document.querySelectorAll('.list')];\n  for (let i = 0; i < list.length; i += 1) {\n    if (e.target.checked === true) {\n      e.target.nextElementSibling.classList.add('strike');\n    } else {\n      e.target.nextElementSibling.classList.remove('strike');\n    }\n  }\n}\n\nlistContainer.addEventListener('click', addNewTask);\n\nwindow.onload = populateList;\n\n\n//# sourceURL=webpack://todo-list-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _check_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./check.js */ \"./src/check.js\");\n/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage.js */ \"./src/storage.js\");\n\r\n\r\n\r\n\r\nconst listContainer = document.querySelector('.container');\r\nconst toDoList = [\r\n  {\r\n    description: 'cook',\r\n    completed: false,\r\n    index: 1,\r\n  },\r\n  {\r\n    description: 'dance',\r\n    completed: false,\r\n    index: 2,\r\n  },\r\n  {\r\n    description: 'sing',\r\n    completed: false,\r\n    index: 3,\r\n  },\r\n];\r\n\r\nfunction populateList(tasks) {\r\n  for (let i = 0; i < tasks.length; i += 1) {\r\n    const list = document.createElement('li');\r\n    list.classList.add('list');\r\n    list.id = tasks[i].index;\r\n    list.draggable = true;\r\n\r\n    const listFChild = document.createElement('div');\r\n    listFChild.classList.add('div1');\r\n\r\n    const input = document.createElement('input');\r\n    input.classList.add('check');\r\n    input.type = 'checkbox';\r\n    input.name = 'check1';\r\n\r\n    if (tasks[i].completed) {\r\n      input.checked = true;\r\n    }\r\n\r\n    const label = document.createElement('label');\r\n    label.contentEditable = true;\r\n    label.classList.add('label');\r\n    label.innerHTML = tasks[i].description;\r\n    label.style.textDecoration = tasks.completed === true ? 'line-through' : 'none';\r\n\r\n    const span = document.createElement('span');\r\n    span.classList.add('dot');\r\n\r\n    const dot = document.createElement('i');\r\n    dot.className += 'fas fa-ellipsis-v';\r\n\r\n    const trash = document.createElement('span');\r\n    trash.innerHTML = \"<i class='fas fa-trash-alt'></i>\";\r\n    trash.style.display = 'none';\r\n\r\n    span.appendChild(dot);\r\n    list.appendChild(listFChild);\r\n    listFChild.appendChild(input);\r\n    listFChild.appendChild(label);\r\n    listFChild.appendChild(span);\r\n    listFChild.appendChild(trash);\r\n    listContainer.appendChild(list);\r\n\r\n    label.addEventListener('focus', () => {\r\n      span.style.display = 'none';\r\n      trash.style.display = 'flex';\r\n    });\r\n\r\n    label.addEventListener('blur', () => {\r\n      span.style.display = 'flex';\r\n      trash.style.display = 'none';\r\n    });\r\n\r\n    input.addEventListener('change', (e) => {\r\n      (0,_check_js__WEBPACK_IMPORTED_MODULE_1__.default)(e.target, tasks[i]);\r\n      (0,_storage_js__WEBPACK_IMPORTED_MODULE_2__.default)(tasks);\r\n    });\r\n  }\r\n}\r\n\r\nwindow.addEventListener('load', () => {\r\n  const todoList = JSON.parse(localStorage.getItem('todo-list'));\r\n\r\n  if (todoList == null) {\r\n    populateList(toDoList);\r\n  } else {\r\n    populateList(todoList);\r\n  }\r\n});\r\n\r\nlocalStorage.clear();\r\n\n\n//# sourceURL=webpack://todo-list-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/storage.js":
+/*!************************!*\
+  !*** ./src/storage.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst saveStorage = (items) => {\r\n  localStorage.setItem('todo-list', JSON.stringify(items));\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (saveStorage);\n\n//# sourceURL=webpack://todo-list-app/./src/storage.js?");
 
 /***/ })
 

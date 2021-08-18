@@ -96,10 +96,6 @@ ul {
   cursor: move;
 }
 
-.delete {
-  cursor: pointer;
-}
-
 .check {
   width: 20px;
   height: 20px;
@@ -125,10 +121,6 @@ ul {
 .italics:placeholder-shown {
   font-style: italic;
   font-size: 20px;
-}
-
-.strike {
-  text-decoration: line-through;
 }
 
 /* clear */
