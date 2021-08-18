@@ -21,7 +21,7 @@ const toDoList = [
   },
 ];
 
-function populateList(tasks) {
+const populateList = (tasks) => {
   for (let i = 0; i < tasks.length; i += 1) {
     const list = document.createElement('li');
     list.classList.add('list');
