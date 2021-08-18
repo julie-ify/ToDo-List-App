@@ -1,5 +1,6 @@
 import './style.css';
 import check from './check.js';
+import addlist from './addlist.js';
 import saveStorage from './storage.js';
 
 const listContainer = document.querySelector('.container');
@@ -21,7 +22,7 @@ const toDoList = [
   },
 ];
 
-const populateList = (tasks) => {
+export const populateList = (tasks) => {
   for (let i = 0; i < tasks.length; i += 1) {
     const list = document.createElement('li');
     list.classList.add('list');
