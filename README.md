@@ -4,8 +4,7 @@
 
 > Desktop version of my portfolio website using figma template.
 
-![screenshot](./src/Todo-ss.png)
-
+![screenshot](./src/screenshot2-Copy.png)
 
 This project entails Building a responsive Todo list app which allows you to add and remove a task. The design was gotten from minimalist.
 
