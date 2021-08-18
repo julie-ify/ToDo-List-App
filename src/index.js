@@ -79,7 +79,7 @@ const populateList = (tasks) => {
       saveStorage(tasks);
     });
   }
-}
+};
 
 window.addEventListener('load', () => {
   const todoList = JSON.parse(localStorage.getItem('todo-list'));
