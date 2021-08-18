@@ -5,13 +5,15 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  overflow-y: hidden;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 /* Form section */
 .form-section {
-  height: 100vh;
+  height: 80vh;
   width: 500px;
+  overflow: hidden;
   margin: 0 auto;
 }
 
