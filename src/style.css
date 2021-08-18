@@ -15,10 +15,6 @@ body {
   margin: 0 auto;
 }
 
-.strike {
-  text-decoration: line-through;
-}
-
 ul {
   list-style: none;
 }
@@ -46,7 +42,7 @@ ul {
 
 .heading {
   padding: 1rem 0.5rem;
-  color: orange;
+  color: blue;
 }
 
 /* Form input */
@@ -73,12 +69,12 @@ ul {
 }
 
 .syc:hover {
-  color: orange;
+  color: blue;
   cursor: pointer;
 }
 
 .add:hover {
-  color: orange;
+  color: blue;
 }
 
 /* checkbox */
@@ -104,7 +100,7 @@ ul {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  background-color: orange;
+  background-color: blue;
 }
 
 .label {
