@@ -42,7 +42,7 @@ ul {
 
 .heading {
   padding: 1rem 0.5rem;
-  color: orange;
+  color: blue;
 }
 
 /* Form input */
@@ -69,12 +69,12 @@ ul {
 }
 
 .syc:hover {
-  color: orange;
+  color: blue;
   cursor: pointer;
 }
 
 .add:hover {
-  color: orange;
+  color: blue;
 }
 
 /* checkbox */
@@ -96,15 +96,11 @@ ul {
   cursor: move;
 }
 
-.delete {
-  cursor: pointer;
-}
-
 .check {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  background-color: orange;
+  background-color: blue;
 }
 
 .label {
@@ -125,10 +121,6 @@ ul {
 .italics:placeholder-shown {
   font-style: italic;
   font-size: 20px;
-}
-
-.strike {
-  text-decoration: line-through;
 }
 
 /* clear */
