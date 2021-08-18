@@ -44,7 +44,8 @@ function populateList(tasks) {
     label.contentEditable = true;
     label.classList.add('label');
     label.innerHTML = tasks[i].description;
-    label.style.textDecoration = tasks.completed === true ? 'line-through' : 'none';
+    label.style.textDecoration =
+      tasks[i].completed === true ? 'line-through' : 'none';
 
     const span = document.createElement('span');
     span.classList.add('dot');
@@ -91,4 +92,4 @@ window.addEventListener('load', () => {
   }
 });
 
-localStorage.clear();
+
