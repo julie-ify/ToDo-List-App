@@ -80,16 +80,17 @@ export const populateList = () => {
       listContainer.appendChild(list);
   
       label.addEventListener('focus', () => {
+    
         span.style.display = 'none';
         trash.style.display = 'flex';
         label.style.textDecoration = 'none';
 
         trash.addEventListener('mousedown', (e) => {
-          e.preventDefault();
+          e.preventDefault()
           trashTask(parseInt(trash.id));
+          
         })
       });
-  
       label.addEventListener('blur', () => {
         span.style.display = 'flex';
         trash.style.display = 'none';
@@ -110,12 +111,12 @@ addNewTaskBtn.addEventListener('click', (e) => {
 })
 
 
-window.addEventListener('load', () => {
-  const todoList = JSON.parse(localStorage.getItem('todo-list'));
+window.onload = populateList;
+//   const todoList = JSON.parse(localStorage.getItem('todo-list'));
 
-  if (todoList == null) {
-    populateList();
-  } else {
-    populateList();
-  }
-});
+//   if (todoList == null) {
+//     populateList();
+//   } else {
+//     populateList();
+//   }
+// });

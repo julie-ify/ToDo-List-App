@@ -6,7 +6,7 @@ const addNewTask = (input) => {
     ? JSON.parse(localStorage.getItem('todo-list'))
     : [];
   const task = {
-    index: taskList.length,
+    index: taskList.length + 1,
     completed: false,
     description: input.value,
   };
@@ -15,9 +15,8 @@ const addNewTask = (input) => {
     return;
   } else {
     taskList.push(task);
+    saveStorage(taskList);
   }
-
-  saveStorage(taskList);
 
   input.value = '';
 
@@ -25,4 +24,3 @@ const addNewTask = (input) => {
 };
 
 export default addNewTask;
-
