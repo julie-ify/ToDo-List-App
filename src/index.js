@@ -68,10 +68,12 @@ const populateList = () => {
       label.addEventListener('focus', () => {
         span.style.display = 'none';
         trash.style.display = 'flex';
+        trash.style.color = '#fff';
+        trash.style.cursor = 'pointer';
         label.style.textDecoration = 'none';
         list.style.backgroundColor = 'blue';
-        list.style.opacity = '0.5';
-        list.style.color = '#fff';
+        list.style.opacity = '0.6';
+        label.style.color = '#fff';
         label.style.outline = 'none';
 
         trash.addEventListener('mousedown', (e) => {
