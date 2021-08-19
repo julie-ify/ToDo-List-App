@@ -45,7 +45,7 @@ const populateList = () => {
       label.classList.add('label');
       label.innerHTML = tasks[i].description;
       label.style.textDecoration = tasks[i].completed === true ? 'line-through' : 'none';
-      label.style.color = '#444'
+      label.style.color = '#444';
       const span = document.createElement('span');
       span.classList.add('dot');
 
