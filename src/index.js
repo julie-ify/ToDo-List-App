@@ -1,6 +1,7 @@
 import './style.css';
 import check from './check.js';
 import addNewTask from './addlist.js';
+import trashTask from './trashTask.js'
 import {saveStorage, getStorage} from './storage.js';
 
 const listContainer = document.querySelector('.container');
