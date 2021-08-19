@@ -64,10 +64,12 @@ ul {
   outline: none;
   font-size: 20px;
   cursor: pointer;
+  color: #888;
 }
 
 .syc {
   padding: 1rem;
+  color: #888;
 }
 
 .syc:hover {
@@ -96,6 +98,7 @@ ul {
 
 .dot {
   cursor: move;
+  color: #888;
 }
 
 .check {

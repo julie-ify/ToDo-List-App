@@ -1,4 +1,4 @@
-import {saveStorage, getStorage} from './storage';
+import { saveStorage, getStorage } from './storage.js';
 
 const trashTask = (taskIndex) => {
   const storedTasks = getStorage();

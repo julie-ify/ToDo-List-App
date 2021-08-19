@@ -5,5 +5,4 @@ export const saveStorage = (items) => {
 export const getStorage = () => {
   const tasks = localStorage.getItem('todo-list') ? JSON.parse(localStorage.getItem('todo-list')) : [];
   return tasks;
-}
-
+};

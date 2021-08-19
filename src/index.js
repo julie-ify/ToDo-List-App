@@ -1,35 +1,20 @@
+/* eslint-disable radix */
+/* eslint-disable import/no-cycle */
+
 import './style.css';
 import check from './check.js';
 import addNewTask from './addlist.js';
-import {trashCompleted} from './completed';
+import trashCompleted from './completed.js';
 import trashTask from './trashTask.js';
-import {editTask} from './edit.js';
-import {saveStorage, getStorage} from './storage.js';
+import editTask from './edit.js';
+import { saveStorage, getStorage } from './storage.js';
 
 const listContainer = document.querySelector('.container');
 const addNewTaskInput = document.querySelector('#text');
 const addNewTaskBtn = document.querySelector('.add');
 const clearCompletedTask = document.querySelector('.clear');
 
-const toDoList = [
-  {
-    description: 'cook',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'dance',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'sing',
-    completed: false,
-    index: 3,
-  },
-];
-
-export const populateList = () => {
+const populateList = () => {
   while (listContainer.lastChild) {
     listContainer.removeChild(listContainer.lastChild);
   }
@@ -59,9 +44,8 @@ export const populateList = () => {
       label.contentEditable = true;
       label.classList.add('label');
       label.innerHTML = tasks[i].description;
-      label.style.textDecoration =
-        tasks[i].completed === true ? 'line-through' : 'none';
-
+      label.style.textDecoration = tasks[i].completed === true ? 'line-through' : 'none';
+      label.style.color = '#444'
       const span = document.createElement('span');
       span.classList.add('dot');
 
@@ -85,6 +69,10 @@ export const populateList = () => {
         span.style.display = 'none';
         trash.style.display = 'flex';
         label.style.textDecoration = 'none';
+        list.style.backgroundColor = 'blue';
+        list.style.opacity = '0.5';
+        list.style.color = '#fff';
+        label.style.outline = 'none';
 
         trash.addEventListener('mousedown', (e) => {
           e.preventDefault();
@@ -95,7 +83,7 @@ export const populateList = () => {
         span.style.display = 'flex';
         trash.style.display = 'none';
 
-        editTask(e.target, tasks, tasks[i])
+        editTask(e.target, tasks, tasks[i]);
       });
 
       input.addEventListener('change', (e) => {
@@ -116,12 +104,6 @@ clearCompletedTask.addEventListener('click', (e) => {
   trashCompleted();
 });
 
-window.onload = populateList;
-//   const todoList = JSON.parse(localStorage.getItem('todo-list'));
+export default populateList;
 
-//   if (todoList == null) {
-//     populateList();
-//   } else {
-//     populateList();
-//   }
-// });
+window.onload = populateList;
