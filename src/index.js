@@ -8,6 +8,7 @@ import {saveStorage, getStorage} from './storage.js';
 const listContainer = document.querySelector('.container');
 const addNewTaskInput = document.querySelector('#text');
 const addNewTaskBtn = document.querySelector('.add');
+const clearCompletedTask = document.querySelector('.clear');
 
 const toDoList = [
   {
@@ -109,6 +110,11 @@ export const populateList = () => {
 addNewTaskBtn.addEventListener('click', (e) => {
   e.preventDefault()
   addNewTask(addNewTaskInput)
+})
+
+clearCompletedTask.addEventListener('click', (e) => {
+  e.preventDefault()
+  trashCompleted()
 })
 
 
