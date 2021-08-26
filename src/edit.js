@@ -9,7 +9,8 @@ const editTask = (text, tasks, task) => {
 
   taskToEdit.description = text.textContent;
   saveStorage(tasks);
-  populateList();
+  return taskToEdit;
+  // populateList();
 };
 
 export default editTask;
