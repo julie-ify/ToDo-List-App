@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "watch": "webpack --watch",
     "start": "webpack serve --open",
     "build": "webpack",
@@ -22,6 +26,7 @@
   },
   "homepage": "https://github.com/julie-ify/ToDo-List-App",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.2.0",
     "eslint": "^7.32.0",
@@ -29,12 +34,13 @@
     "eslint-plugin-import": "^2.24.0",
     "hint": "^6.1.4",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
     "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.20.1",
-    "webpack": "^5.50.0",
+    "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2"
   },

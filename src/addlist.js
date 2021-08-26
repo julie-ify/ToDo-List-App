@@ -1,27 +1,25 @@
 /* eslint-disable import/no-cycle */
-
-import { saveStorage } from './storage.js';
+import { saveStorage, getStorage } from './storage.js';
+// const { getStorage, saveStorage } = storage;
 import populateList from './index.js';
 
 const addNewTask = (input) => {
-  const taskList = localStorage.getItem('todo-list')
-    ? JSON.parse(localStorage.getItem('todo-list'))
-    : [];
+  const taskList = getStorage();
   const task = {
     index: taskList.length + 1,
     completed: false,
     description: input.value,
   };
 
-  if (input.value === '') {
-    return;
-  }
   taskList.push(task);
+
   saveStorage(taskList);
-
-  input.value = '';
-
-  populateList();
+  // input.value = '';
+  populateList(taskList);
+  return task;
+  // if (input.value === '') {
+  //   return;
+  // }
 };
 
 export default addNewTask;
