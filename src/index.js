@@ -44,8 +44,7 @@ const populateList = () => {
       label.contentEditable = true;
       label.classList.add('label');
       label.innerHTML = tasks[i].description;
-      label.style.textDecoration =
-        tasks[i].completed === true ? 'line-through' : 'none';
+      label.style.textDecoration = tasks[i].completed === true ? 'line-through' : 'none';
       label.style.color = '#444';
 
       const trash = document.createElement('span');
