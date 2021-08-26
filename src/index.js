@@ -46,28 +46,21 @@ const populateList = () => {
       label.innerHTML = tasks[i].description;
       label.style.textDecoration = tasks[i].completed === true ? 'line-through' : 'none';
       label.style.color = '#444';
-      const span = document.createElement('span');
-      span.classList.add('dot');
-
-      const dot = document.createElement('i');
-      dot.className += 'fas fa-ellipsis-v';
 
       const trash = document.createElement('span');
       trash.innerHTML = "<i class='fas fa-trash-alt'></i>";
-      trash.style.display = 'none';
+      trash.style.display = 'flex';
+      trash.style.cursor = 'pointer';
       trash.id = tasks.indexOf(tasks[i]);
 
-      span.appendChild(dot);
       list.appendChild(listFChild);
       listFChild.appendChild(input);
       listFChild.appendChild(label);
-      listFChild.appendChild(span);
       listFChild.appendChild(trash);
       listContainer.appendChild(list);
 
       label.addEventListener('focus', () => {
-        span.style.display = 'none';
-        trash.style.display = 'flex';
+        trash.style.display = 'none';
         trash.style.color = '#fff';
         trash.style.cursor = 'pointer';
         label.style.textDecoration = 'none';
@@ -75,22 +68,22 @@ const populateList = () => {
         list.style.opacity = '0.6';
         label.style.color = '#fff';
         label.style.outline = 'none';
-
-        trash.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          trashTask(parseInt(trash.id));
-        });
       });
-      label.addEventListener('blur', (e) => {
-        span.style.display = 'flex';
-        trash.style.display = 'none';
 
+      label.addEventListener('blur', (e) => {
         editTask(e.target, tasks, tasks[i]);
       });
 
       input.addEventListener('change', (e) => {
         check(e.target, tasks[i]);
         saveStorage(tasks);
+      });
+
+      trash.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        const updatedTasks = trashTask(parseInt(trash.id));
+       
+        populateList()
       });
     }
   }
