@@ -64,10 +64,6 @@ const populateList = () => {
         trash.style.display = 'none';
         trash.style.color = '#fff';
         trash.style.cursor = 'pointer';
-        label.style.textDecoration = 'none';
-        list.style.backgroundColor = 'blue';
-        list.style.opacity = '0.6';
-        label.style.color = '#fff';
         label.style.outline = 'none';
       });
 

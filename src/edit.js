@@ -1,5 +1,7 @@
 /* eslint-disable import/no-cycle */
 
+/* eslint-disable import/no-cycle */
+
 import populateList from './index.js';
 import { saveStorage } from './storage.js';
 
@@ -10,7 +12,7 @@ const editTask = (text, tasks, task) => {
   taskToEdit.description = text.textContent;
   saveStorage(tasks);
   return taskToEdit;
-  // populateList();
+ 
 };
 
 export default editTask;
