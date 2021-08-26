@@ -42,3 +42,13 @@ describe('Testing the addNewTask function', () => {
     expect(items).toBe(3);
   });
 });
+
+test('test the function trashTask', () => {
+  saveStorage([]);
+  addNewTask(newTodoInput);
+  addNewTask(newTodoInput);
+  trashTask(1);
+  expect(getStorage().length).toBe(1);
+  trashTask(0);
+  expect(getStorage().length).toBe(0);
+});
