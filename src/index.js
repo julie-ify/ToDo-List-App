@@ -44,7 +44,8 @@ const populateList = () => {
       label.contentEditable = true;
       label.classList.add('label');
       label.innerHTML = tasks[i].description;
-      label.style.textDecoration = tasks[i].completed === true ? 'line-through' : 'none';
+      label.style.textDecoration =
+        tasks[i].completed === true ? 'line-through' : 'none';
       label.style.color = '#444';
 
       const trash = document.createElement('span');
@@ -72,6 +73,7 @@ const populateList = () => {
 
       label.addEventListener('blur', (e) => {
         editTask(e.target, tasks, tasks[i]);
+        populateList();
       });
 
       input.addEventListener('change', (e) => {
@@ -96,6 +98,7 @@ addNewTaskBtn.addEventListener('click', (e) => {
 clearCompletedTask.addEventListener('click', (e) => {
   e.preventDefault();
   trashCompleted();
+  populateList();
 });
 
 export default populateList;

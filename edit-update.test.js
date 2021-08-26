@@ -1,5 +1,6 @@
 import editTask from './src/edit.js';
 import addNewTask from './src/addlist.js';
+import trashCompleted from './src/completed.js';
 import { getStorage, saveStorage } from './src/storage.js';
 
 jest.mock('./src/storage.js');
@@ -21,4 +22,17 @@ test('test the function editTask', () => {
     completed: false,
     index: 1,
   });
+});
+
+test('test the function trashCompleted', () => {
+  saveStorage([]);
+  addNewTask(newTodoInput);
+  addNewTask(newTodoInput);
+  addNewTask(newTodoInput);
+  getStorage().forEach((task) => {
+    task.completed = true;
+  });
+  addNewTask(newTodoInput);
+  trashCompleted();
+  expect(getStorage().length).toBe(1);
 });

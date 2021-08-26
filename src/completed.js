@@ -1,6 +1,4 @@
 /* eslint-disable import/no-cycle */
-
-import populateList from './index.js';
 import { saveStorage, getStorage } from './storage.js';
 
 const trashCompleted = () => {
@@ -10,7 +8,6 @@ const trashCompleted = () => {
     (task) => task.completed === false,
   );
   saveStorage(uncompletedTask);
-  populateList();
 };
 
 export default trashCompleted;
