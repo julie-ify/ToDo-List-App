@@ -81,9 +81,8 @@ const populateList = () => {
 
       trash.addEventListener('mousedown', (e) => {
         e.preventDefault();
-        const updatedTasks = trashTask(parseInt(trash.id));
-       
-        populateList()
+        trashTask(parseInt(trash.id));
+        populateList();
       });
     }
   }
