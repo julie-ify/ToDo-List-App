@@ -63,15 +63,12 @@ const populateList = () => {
         trash.style.display = 'none';
         trash.style.color = '#fff';
         trash.style.cursor = 'pointer';
-        label.style.textDecoration = 'none';
-        list.style.backgroundColor = 'blue';
-        list.style.opacity = '0.6';
-        label.style.color = '#fff';
         label.style.outline = 'none';
       });
 
       label.addEventListener('blur', (e) => {
         editTask(e.target, tasks, tasks[i]);
+        populateList();
       });
 
       input.addEventListener('change', (e) => {
@@ -96,6 +93,7 @@ addNewTaskBtn.addEventListener('click', (e) => {
 clearCompletedTask.addEventListener('click', (e) => {
   e.preventDefault();
   trashCompleted();
+  populateList();
 });
 
 export default populateList;
